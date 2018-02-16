@@ -1,0 +1,65 @@
+   <div id = "page">
+
+      <div id = "top">
+         <text>Your Gold:  <%= session[:balance] %></text>
+
+         <div>
+            <form action='/games/init' method="post">
+               <%= tag(:input,:type =>"hidden",:name => request_forgery_protection_token.to_s,:value => form_authenticity_token)%>
+               <input type='submit' value='Reset'>
+            </form>
+         </div>
+
+      </div>
+
+      <div id = "middle">
+
+      <div id = 'box1'>
+         <form action='/games/farm' method="post">
+            <%= tag(:input,:type =>"hidden",:name => request_forgery_protection_token.to_s,:value => form_authenticity_token)%>
+            <text id = 'first'>F A R M<text>
+            <text id = 'second'>(earns 10 - 20 golds)<text>
+            <input type='submit' value='Find Gold!'>
+         </form>
+      </div>
+
+      <div id = 'box2'>
+         <form action='/games/cave' method="post">
+            <%= tag(:input,:type =>"hidden",:name => request_forgery_protection_token.to_s,:value => form_authenticity_token)%>
+            <text id = 'first'>C A V E<text>
+            <text id = 'second'>(earns 5 - 10 golds)<text>
+            <input type='submit' value='Find Gold!'>
+         </form>
+      </div>
+
+      <div id = 'box3'>
+         <form action='/games/house' method="post">
+            <%= tag(:input,:type =>"hidden",:name => request_forgery_protection_token.to_s,:value => form_authenticity_token)%>
+            <text id = 'first'>H O U S E<text>
+            <text id = 'second'>(earns 2 - 5 golds)<text>
+            <input type='submit' value='Find Gold!'>
+         </form>
+      </div>
+
+      <div id = 'box4'>
+         <form action='/games/casino' method="post">
+            <%= tag(:input,:type =>"hidden",:name => request_forgery_protection_token.to_s,:value => form_authenticity_token)%>
+            <text id = 'first'>C A S I N O <text>
+            <text id = 'second'>(earns/takes 0 - 50 golds)<text>
+            <input type='submit' value='Find Gold!'>
+         </form>
+      </div>
+
+      <div id = "bottom">
+         <text id = 'log1'>Activities<text>
+         <div id = "log2">
+            <% if session[:activities].length > 0 %>
+               <% session[:activities].each do |msg| %>
+                  <%= msg.html_safe %>
+               <% end %>
+            <% end %>
+         </div>
+      </div>
+
+   </div>
+
